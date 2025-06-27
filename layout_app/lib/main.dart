@@ -90,7 +90,7 @@ class LocationDetailScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'https://www.instagram.com/hoysehay/',
+                        'instagram HOYSEHAY',
                         style: TextStyle(
                           fontSize: 14,
                           color: Color.fromARGB(255, 22, 209, 168),
