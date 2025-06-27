@@ -12,7 +12,7 @@ class TravelApp extends StatelessWidget {
     return MaterialApp(
       title: 'Travel Location Demo',
       theme: ThemeData(
-        primarySwatch: const Color.fromARGB(255, 30, 182, 55),
+        primaryColor: const Color.fromARGB(255, 12, 202, 43),
         useMaterial3: true,
       ),
       home: const LocationDetailScreen(),
@@ -37,13 +37,12 @@ class LocationDetailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,  // <-- แก้ตรงนี้
           children: [
-            // Header text
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-                'Flutter layout demo',
+                'Suphan group',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -52,7 +51,6 @@ class LocationDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            
             Container(
               height: 300,
               width: double.infinity,
@@ -60,14 +58,12 @@ class LocationDetailScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 image: const DecorationImage(
-                  image: NetworkImage(
-                    'assets/images/Shell.jpg'
-                  ), // รูปทะเลสาบสวยๆ จาก Unsplash
+                  image: AssetImage('assets/images/Shell.jpg'),
                   fit: BoxFit.cover,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withAlpha((0.1 * 255).toInt()),
                     spreadRadius: 2,
                     blurRadius: 8,
                     offset: const Offset(0, 4),
@@ -76,18 +72,17 @@ class LocationDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            
-            // Location info
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                  // เปลี่ยน Column ด้านซ้ายให้อยู่ตรงกลางข้อความด้วย
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,  // <-- แก้ตรงนี้
+                    children: const [
                       Text(
-                        'Oeschinen Lake Campground',
+                        'Ass.Pro. Suphan Chainok',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -95,7 +90,7 @@ class LocationDetailScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'Kandersteg, Switzerland',
+                        'https://www.instagram.com/hoysehay/',
                         style: TextStyle(
                           fontSize: 14,
                           color: Color.fromARGB(255, 22, 209, 168),
@@ -104,10 +99,10 @@ class LocationDetailScreen extends StatelessWidget {
                     ],
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(Icons.star, color: Colors.red, size: 20),
-                      const SizedBox(width: 4),
-                      const Text(
+                      SizedBox(width: 4),
+                      Text(
                         '41',
                         style: TextStyle(
                           fontSize: 14,
@@ -120,8 +115,19 @@ class LocationDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            
-            // Action buttons
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'อาจารย์ประจำสาขาวิชาวิทยาการคอมพิวเตอร์\nคณะศิลปและวิทยาศาสตร์\nมหาวิทยาลัยราชภัฏศรีสะเกษ',
+                style: TextStyle(
+                  fontSize: 14,
+                  height: 1.6,
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,  // <-- เพิ่มตรงนี้
+              ),
+            ),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: Row(
@@ -133,20 +139,6 @@ class LocationDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 30),
-            
-            // Description
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.',
-                style: TextStyle(
-                  fontSize: 14,
-                  height: 1.6,
-                  color: Colors.black87,
-                ),
-              ),
-            ),
             const SizedBox(height: 40),
           ],
         ),
@@ -154,7 +146,7 @@ class LocationDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton(IconData icon, String label, Color color) {
+  static Widget _buildActionButton(IconData icon, String label, Color color) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -170,5 +162,5 @@ class LocationDetailScreen extends StatelessWidget {
         ),
       ],
     );
-  } // ← เอาเครื่องหมายจุลภาคออก!
+  }
 }
